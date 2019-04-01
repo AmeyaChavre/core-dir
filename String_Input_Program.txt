@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+cout << "Various ways to input string:\n";
+cout << "\n\n**Method1**\n\n";
+char Arr1[20];
+cout << "Please enter a String:\n";
+cin.get(Arr1,20);
+cin.get();
+cout << "You have entered:\n" << Arr1 << endl;
+cout << "\n\n**Method2**\n\n";
+cout << "Please enter a String:\n";
+char Arr2[20];
+cin.getline(Arr2,20);
+cout << "You have entered:\n" << Arr2 << endl;
+cout << "\n\n**Method3**\n\n";
+cout << "Please enter a String:\n";
+string str1;
+getline(cin,str1);
+cout << "You have entered:\n" << str1 << endl;
+return 0;
+}

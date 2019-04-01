@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+char stringOne[256];
+char stringTwo[256];
+cout << "Enter String One : ";
+cin.get(stringOne,256);
+cout << "Enter String Two : ";
+cin >> stringTwo;
+cout << "stringOne : " << stringOne << " stringTwo : " << stringTwo << endl;
+return 0;
+}

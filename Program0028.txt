@@ -1,0 +1,134 @@
+#include <iostream>
+using namespace std;
+const int DefaultSize=10;
+
+class Animal
+{
+public:
+    Animal(int);
+    Animal();
+    ~Animal();
+
+    int GetWeight() const {return itsWeight;}
+    void SetWeight(int theWeight) {itsWeight=theWeight;}
+
+    friend ostream& operator<< (ostream&,const Animal&);
+
+private:
+    int itsWeight;
+};
+
+ostream& operator<< (ostream& theStream,const Animal& theAnimal)
+{
+theStream << theAnimal.GetWeight();
+return theStream;
+}
+
+Animal::Animal(int weight):
+    itsWeight(weight)
+    {
+        // cout << "Animal(int)\n";
+    }
+
+Animal::Animal():
+    itsWeight(0)
+    {
+        // cout << "Animal\n";
+    }
+
+Animal::~Animal()
+{
+    // cout << "Destroyed an animal.\n";
+}
+
+template <class T>
+class Array
+{
+public:
+    Array(int itsSize=DefaultSize);
+    Array(const Array &rhs);
+    ~Array() {delete [] pType;}
+
+    Array& operator=(const Array&);
+    T& operator[] (int offSet) {return pType[offSet];}
+    const T& operator[] (int offSet) const {return pType[offSet];}
+    int GetSize() const {return itsSize;}
+    friend ostream& operator<< (ostream&,const Array<T>&);
+
+private:
+    T *pType;
+    int itsSize;
+};
+
+template <class T>
+ostream& operator<< (ostream& output,const Array<T>& theArray)
+{
+for (int i=0;i<theArray.GetSize();i++)
+    output << "[" << i << "]" << theArray[i] << endl;
+return output;
+}
+
+template <class T>
+Array<T>::Array(int Size):
+    itsSize(Size)
+    {
+        pType=new T[Size];
+        for (int i=0;i<Size;i++)
+            pType[i]=0;
+    }
+
+template <class T>
+Array<T>::Array(const Array &rhs)
+{
+itsSize=rhs.GetSize();
+pType=new T[itsSize];
+for (int i=0;i<itsSize;i++)
+    pType[i]=rhs[i];
+}
+
+void IntFillFunction(Array<int>& theArray);
+
+void AnimalFillFunction(Array<Animal>& theArray);
+
+int main()
+{
+Array <int> intArray;
+Array<Animal> animalArray;
+IntFillFunction(intArray);
+AnimalFillFunction(animalArray);
+cout << "intArray:\n" << intArray;
+cout << "\nanimalArray\n" << animalArray << endl;
+return 0;
+}
+
+void IntFillFunction(Array<int>& theArray)
+{
+bool Stop=false;
+int offSet,value;
+while(!Stop)
+{
+cout << "Enter an offSet (0-9) :\n";
+cout << "and a value. (-1) to stop. : ";
+cin >> offSet >>value;
+if(offSet<0)
+    break;
+if(offSet>0)
+    {
+        cout << "****Please use the values between 0-9 :****\n";
+        continue;
+    }
+theArray[offSet]=value;
+}
+}
+
+void AnimalFillFunction(Array<Animal>& theArray)
+{
+Animal *pAnimal;
+for (int i=0;i<theArray.GetSize();i++)
+    {
+        pAnimal=new Animal;
+        pAnimal->SetWeight(i*100);
+        theArray[i]=*pAnimal;
+        delete pAnimal;
+    }
+}

@@ -1,0 +1,37 @@
+
+/*
+Complete the code in Index.js in a way that 
+the function should return a single object
+ which has key as the parameter someKey and value as someValue
+
+*/
+
+let convertToKeyValuePair = (someKey,someValue)=>{
+
+    // this function should return a single object which has 
+    //key as the value of someKey and value as someValue
+
+   
+
+};
+
+module.exports = {convertToKeyValuePair:convertToKeyValuePair};
+*******************************************
+solution:
+
+
+let convertToKeyValuePair = (someKey,someValue)=>{
+
+    // this function should return a single object which has 
+    //key as the value of someKey and value as someValue
+
+let someObject = 
+{
+	[someKey]:someValue // enter square braces around the key name to make sure it's value gets printed..!!
+}
+return (someObject);
+
+}
+
+
+console.log(convertToKeyValuePair("Hello","Moto"));

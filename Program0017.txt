@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+char a,b,c;
+cout << "Enter three letters: \n";
+cin.get(a).get();
+cin.get(b).get();
+cin.get(c).get();
+cout << "a: " << a << "\nb: ";
+cout << b << "\nc: " << c << endl;
+return 0;
+}

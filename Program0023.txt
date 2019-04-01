@@ -1,0 +1,56 @@
+#include <iostream>
+
+// Using a Namespace
+
+namespace Window
+{
+    const int MAX_X=30;
+    const int MAX_Y=40;
+    class Pane
+    {
+        public:
+        Pane();
+        ~Pane();
+        void Size(int x , int y);
+        void Move(int x , int y);
+        void Show();
+        private:
+            static int cnt;
+            int x;
+            int y;
+    };
+}
+
+int Window::Pane::cnt=0;
+Window::Pane::Pane(): x(0),y(0) {}
+Window::Pane::~Pane() { }
+
+void Window::Pane::Size(int x , int y)
+    {
+        if(x<Window::MAX_X && x>0)
+            Pane::x=x;
+        if(y<Window::MAX_Y && y>0)
+            Pane::y=y;
+    }
+
+void Window::Pane::Move(int x , int y)
+    {
+        if(x<Window::MAX_X && x>0)
+            Pane::x=x;
+        if(y<Window::MAX_Y && y>0)
+            Pane::y=y;
+    }
+
+    void Window::Pane::Show()
+    {
+        std::cout << " x " << Pane::x << std::endl;
+        std::cout << " y " << Pane::y << std:: endl;
+    }
+
+    int main()
+    {
+    Window::Pane pane;
+    pane.Move(20,20);
+    pane.Show();
+    return 0;
+    }

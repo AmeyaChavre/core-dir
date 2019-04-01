@@ -1,0 +1,82 @@
+#include <iostream>
+#include "string.hpp"
+using namespace std;
+
+class Employee
+{
+public:
+    Employee();
+    Employee(char * , char * , char * , long);
+    ~Employee();
+    Employee (const Employee &);
+    Employee & operator=(const Employee &);
+
+    const String & GetFirstName() const {return itsFirstName;}
+    const String  & GetLastName() const {return itsLastName;}
+    const String  & GetItsAddress() const {return itsAddress;}
+    long GetItsSalary() const {return itsSalary;}
+
+    void SetFirstName(const String & fname) {itsFirstName=fname;}
+    void SetLastName(const String & lname) {itsLastName=lname;}
+    void SetItsAddress(const String & address) {itsAddress=address;}
+    void SetItsSalary(long salary) {itsSalary=salary;}
+
+private:
+    String itsFirstName;
+    String itsLastName;
+    String itsAddress;
+    long itsSalary;
+};
+
+Employee::Employee():
+    itsFirstName(" "),
+    itsLastName(" "),
+    itsAddress(" "),
+    itsSalary(0)
+    { }
+
+Employee::Employee(char * firstName,char * lastName, char * address,long salary):
+    itsFirstName(firstName),
+    itsLastName(lastName),
+    itsAddress(address),
+    itsSalary(salary)
+    { }
+
+Employee::Employee(const Employee & rhs):
+    itsFirstName(rhs.GetFirstName()),
+    itsLastName(rhs.GetLastName()),
+    itsAddress(rhs.GetItsAddress()),
+    itsSalary(rhs.GetItsSalary())
+    { }
+
+Employee::~Employee() { }
+
+Employee & Employee::operator=(const Employee & rhs)
+{
+if (this == &rhs)
+    return *this;
+
+itsFirstName=rhs.GetFirstName();
+itsLastName=rhs.GetLastName();
+itsAddress=rhs.GetItsAddress();
+itsSalary=rhs.GetItsSalary();
+
+return * this;
+}
+int main()
+{
+Employee Edie("Jane","Doe","1461 Shore Parkway",20000);
+Edie.SetItsSalary(50000);
+String LastName("Levine");
+Edie.SetLastName(LastName);
+Edie.SetFirstName("Edythe");
+
+cout << "Name: ";
+cout << Edie.GetFirstName().GetString();
+cout << " "  << Edie.GetLastName().GetString();
+cout << "\n Address : ";
+cout << Edie.GetItsAddress().GetString();
+cout << "\n Salary : ";
+cout << Edie.GetItsSalary();
+return 0;
+}

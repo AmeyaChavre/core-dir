@@ -1,0 +1,37 @@
+var xPositions = [random(0,400),random(0,400)]; 
+var yPositions = [0,0]; 
+var colorArray = [random(0,255),random(0,255),random(0,255)];
+
+draw = function() {                     
+    background(204, 247, 255);          
+
+    for (var i = 0; i < xPositions.length; i++) {   
+        noStroke();
+        if(mouseIsPressed)
+        {
+            for(var color=0;color<256;color++)
+            {
+                fill(random(0,color),random(0,color),random(0,color));
+            }
+        }
+        ellipse(xPositions[i], yPositions[i], 5, 10);
+        image(getImage("cute/GemOrange"), xPositions[i], yPositions[i], 30, 30);
+        
+		if(yPositions[i]>400)
+        {
+            yPositions[i]=0;
+        }
+        else
+        {
+            yPositions[i] += random(0,5);       
+        }
+    
+    }
+    
+};
+
+mouseClicked=function()
+{
+    xPositions.push(mouseX);
+    yPositions.push(mouseY);
+};

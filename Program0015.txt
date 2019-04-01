@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    char YourName[50];
+    cout << "Please Enter your First Name: \n";
+    cin >> YourName;
+    cout << "Your First Name is : " << YourName << endl;
+    cout << "Please Enter your Full Name: \n";
+    cin >> YourName;
+    cout << "Your Full Name is : " << YourName << endl;
+    return 0;
+}

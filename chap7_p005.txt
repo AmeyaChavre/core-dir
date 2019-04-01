@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+int SumOfCookies(const int * begin,const int *end);
+const int ArSize=8;
+int main()
+{
+int cookies[ArSize]={1,2,4,8,16,32,64,128};
+int sum=SumOfCookies(cookies,cookies+3);
+cout << "The first three people ate: " << sum <<  " cookies."<< endl;
+sum=SumOfCookies(cookies+4,cookies+8);
+cout << "The last 4 people ate: " << sum << " cookies." << endl;
+return 0;
+}
+int SumOfCookies(const int * begin,const int *end)
+{
+const int * pt;
+int total=0;
+for (pt=begin;pt!=end;++pt)
+    {
+        total+=*pt;
+    }
+return total;
+}

@@ -1,0 +1,62 @@
+// an array of book objects
+var book = [
+    {title: "Tupac: The West Side Story",
+    stars: 4,
+    author: "2pac",
+    recommend: true},
+    {title: "Notorious Big: The East Coast Boss",
+    stars: 4,
+    author: "Biggie Smalls",
+    recommend: false}
+];
+
+
+// draw shelf #1
+fill(173, 117, 33);
+rect(0, 120, width, 10);
+
+// draw shelf #2
+fill(173, 117, 33);
+rect(0, 270, width, 10);
+
+// first book rectangle
+var c1 = color(102, 99, 194);
+fill(c1);
+rect(10, 20, 90, 100);
+
+//second book rectangle
+var c2 = color(194, 0, 49);
+fill(c2);
+rect(120, 20, 90, 100);
+
+// first book title 
+fill(0, 0, 0);
+text(book[0].title, 15, 29, 70, 100);
+
+//second book title
+fill(0, 0, 0);
+text(book[1].title, 125, 29, 70, 100);
+
+
+for (var i = 0; i < book[0].stars; i++) {
+    image(getImage("cute/Star"), 13 + i * 20, 90, 20, 30);
+    text("- " + book[0].author,60,90);
+}
+
+for (var i = 0; i < book[1].stars; i++) {
+    image(getImage("cute/Star"), 125 + i * 20, 90, 20, 30);
+    text("- " + book[1].author,125,90);
+}
+
+if(book[0].recommend)
+{
+    textSize(15);
+    fill(c1);
+    text("Recommended",10,150);
+}
+if(!book[1].recommend)
+{
+    textSize(15);
+    fill(c2);
+    text("Not Recommended",125,150);
+}

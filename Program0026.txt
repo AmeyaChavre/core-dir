@@ -1,0 +1,109 @@
+#include <iostream>
+using namespace std;
+const int DefaultSize=10;
+
+class Animal
+{
+public:
+    Animal(int);
+    Animal();
+    ~Animal() {}
+    int GetWeight() const {return itsWeight;}
+    void Display() const {cout << itsWeight;}
+private:
+    int itsWeight;
+};
+
+Animal::Animal(int weight):
+    itsWeight(weight) { }
+
+Animal::Animal():
+    itsWeight(0) { }
+
+template <class T>
+class Array
+{
+public:
+    Array(int itsSize=DefaultSize);
+    Array(const Array &rhs);
+    ~Array() {delete [] pType;}
+
+Array& operator=(const Array&);
+T& operator[] (int offSet) {return pType[offSet];}
+const T& operator[] (int offSet) const {return pType[offSet];}
+
+int GetSize() const {return itsSize;}
+
+friend void Intrude(Array<int>);
+
+private:
+    T* pType;
+    int itsSize;
+};
+
+void Intrude(Array<int> theArray)
+{
+cout << "\n**** Intrude ****\n";
+for (int i = 0;i<theArray.itsSize;i++)
+    cout << "i: " << theArray.pType[i] << endl;
+cout << "\n";
+}
+
+template <class T>
+Array<T>::Array(int Size):
+    itsSize(Size)
+{
+pType=new T[Size];
+for (int i=0;i<Size;i++)
+        pType[i]=0;
+}
+
+template <class T>
+Array<T>::Array(const Array& rhs)
+{
+itsSize=rhs.GetSize();
+pType=new T[itsSize];
+for (int i=0;i<itsSize;i++)
+    pType[i]=rhs[i];
+}
+
+template <class T>
+Array<T>& Array<T>::operator=(const Array& rhs)
+{
+if (this==&rhs)
+    return *this;
+delete [] pType;
+itsSize=rhs.GetSize();
+pType=new T[itsSize];
+for (int i=0;i<itsSize;i++)
+    pType[i]=rhs[i];
+return *this;
+}
+
+
+int main()
+{
+Array<int> theArray;
+Array<Animal> theZoo;
+Animal *pAnimal;
+
+for (int i=0;i<theArray.GetSize();i++)
+{
+theArray[i]=i*2;
+pAnimal=new Animal(i*3);
+theZoo[i]=*pAnimal;
+}
+int j;
+for (j=0;j<theArray.GetSize();j++)
+{
+cout << "theZoo [" << j << "]: \t";
+theZoo[j].Display();
+cout << endl;
+}
+
+cout << "Now use the friend function to : ";
+cout << "find the members of Array<int>";
+Intrude(theArray);
+cout << "\n\nDone.\n";
+return 0;
+}

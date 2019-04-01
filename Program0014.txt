@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+int myInt;
+long myLong;
+double myDouble;
+float myFloat;
+unsigned int myUnsigned;
+cout << "Int : \n";
+cin >> myInt;
+cout << "Long : \n";
+cin >> myLong;
+cout << "Double : \n";
+cin >> myDouble;
+cout << "Float : \n";
+cin >> myFloat;
+cout << "Unsigned : \n";
+cin >> myUnsigned;
+cout << "\n\nInt:\t" << myInt << endl;
+cout << "Long:\t" << myLong << endl;
+cout << "Double:\t" << myDouble << endl;
+cout << "Float:\t" << myFloat << endl;
+cout << "Unsigned:\t" << myUnsigned << endl;
+return 0;
+}

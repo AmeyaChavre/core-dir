@@ -1,0 +1,16 @@
+
+.c1
+{
+	background-color: black;
+	background-image: url("image.jpg");
+}
+#id1
+{
+	color : yellow;
+	font-size : 200px;
+}
+#id2
+{
+	color : red;
+	font-size : 50px;
+}

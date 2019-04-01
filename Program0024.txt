@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+const int DefaultSize=10;
+
+template <class T>
+class Array
+{
+public:
+    Array(int itsSize=DefaultSize);
+    Array(const Array &rhs);
+    ~Array() {delete [] pType;}
+
+    Array& operator=(const Array&);
+    T& operator[] (int offSet) {return pType[offSet];}
+
+    int getSize() {return itsSize;}
+private:
+    T * pType;
+    int itsSize;
+};
+int main()
+{
+return 0;
+}
+// Incomplete Program

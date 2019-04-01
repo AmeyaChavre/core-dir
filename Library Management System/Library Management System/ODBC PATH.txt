@@ -1,0 +1,2 @@
+32-Bit Excel needs 32-Bit ODBC-Adminstrator odbcad32.exe which is in C:\Windows\SysWOW64
+64-Bit Excel needs 64-Bit ODBC-Adminstrator odbcad32.exe which is in C:\Windows\System32

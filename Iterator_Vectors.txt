@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+int main()
+{
+    cout << "The Dynamic Array called Vector." << endl;
+    vector<string> inventory;
+    inventory.push_back("My");
+    inventory.push_back("name");
+    inventory.push_back("is");
+    inventory.push_back("Walter");
+    inventory.push_back("White");
+    vector<string>::iterator myIterator;
+    vector<string>::const_iterator iter;
+    for (iter=inventory.begin();iter!=inventory.end();iter++)
+        {
+            cout << "The List of Jericho::" << *iter << endl;
+        }
+    myIterator=inventory.begin();
+    *myIterator="Your";
+    cout << "Now your name changes" << endl;
+    for (iter=inventory.begin();iter!=inventory.end();iter++)
+        {
+            cout << "The List of Jericho::" << *iter << endl;
+        }
+    cout << "The size of IT!!!! " << myIterator->size() << endl;
+    cout << "The size of IT!!!! " << (*myIterator).size() << endl;
+    cout << "His name changes" << endl;
+    inventory.insert(inventory.begin(),"His");
+    for (iter=inventory.begin();iter!=inventory.end();iter++)
+        {
+            cout << "The List of Jericho::" << *iter << endl;
+        }
+    cout << "His name gets Erased" << endl;
+    inventory.erase(inventory.begin()+4);
+    for (iter=inventory.begin();iter!=inventory.end();iter++)
+        {
+            cout << "The List of Jericho::" << *iter << endl;
+        }
+    return 0;
+}

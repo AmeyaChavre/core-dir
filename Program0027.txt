@@ -1,0 +1,105 @@
+#include <iostream>
+using namespace std;
+const int DefaultSize=10;
+class Animal
+{
+public:
+    Animal(int);
+    Animal();
+    ~Animal() { }
+    int GetWeight() const {return itsWeight;}
+    void Display() const {cout << itsWeight;}
+private:
+    int itsWeight;
+};
+
+Animal::Animal(int weight):
+    itsWeight(weight) { }
+
+Animal::Animal():
+    itsWeight(0) { }
+
+template <class T>
+class Array
+{
+public:
+    Array(int itsSize=DefaultSize);
+    Array(const Array& rhs);
+    ~Array() {delete [] pType;}
+
+    Array& operator=(const Array&);
+    T& operator[] (int offSet) {return pType[offSet];}
+    const T& operator[] (int offSet) const {return pType[offSet];}
+
+    int GetSize() const {return itsSize;}
+
+    friend ostream& operator<< (ostream&,Array<T>&);
+
+private:
+    T *pType;
+    int itsSize;
+};
+
+template <class T>
+ostream& operator<< (ostream& output, Array<T>& theArray)
+{
+for (int i=0;i<theArray.GetSize();i++)
+    output << "[" << i << "]" << theArray[i] << endl;
+return output;
+}
+
+template <class T>
+Array<T>::Array(int Size):
+    itsSize(Size)
+    {
+        pType=new T[Size];
+        for (int i=0;i<Size;i++)
+            pType[i]=0;
+    }
+
+template <class T>
+Array<T>::Array(const Array& rhs)
+{
+itsSize=rhs.GetSize();
+pType=new T[itsSize];
+for (int i=0;i<itsSize;i++)
+    pType[i]=rhs[i];
+}
+
+template <class T>
+Array<T>& Array<T>::operator=(const Array& rhs)
+{
+if (this == &rhs)
+    return *this;
+delete [] pType;
+itsSize=rhs.GetSize();
+pType=new T[itsSize];
+for (int i=0;i<itsSize;i++)
+    pType[i]=rhs[i];
+return *this;
+}
+
+int main()
+{
+bool Stop=false;
+int offSet,value;
+Array<int> theArray;
+while(!Stop)
+{
+cout << "Enter an offSet (0-9) :\n";
+cout << "and a value. (-1) to stop. : ";
+cin >> offSet >>value;
+if(offSet<0)
+    break;
+if(offSet>0)
+    {
+        cout << "****Please use the values between 0-9 :****\n";
+        continue;
+    }
+theArray[offSet]=value;
+}
+
+cout << "\n Here's the entire array: \n";
+cout << theArray << endl;
+return 0;
+}

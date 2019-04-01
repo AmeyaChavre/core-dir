@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+int area(int);
+int total_surface_area(int);
+int volume(int);
+int main()
+{
+cout << "\n\nThe Area and Volume Program\n\n";
+cout << "Please enter the length of the side of a cube:\n";
+int x;
+cin >> x;
+cout << "The length of the side of a cube as entered by you is (in cms):\n" << x << endl;
+area(x);
+total_surface_area(x);
+volume(x);
+return 0;
+}
+int area(int a)
+{
+cout << "The area of single surface of the cube is:\n" << a*a << endl;
+}
+int total_surface_area(int a)
+{
+cout << "The total surface area of the cube is:\n" << 6*a*a << endl;
+}
+int volume(int a)
+{
+cout << "The volume of the cube is:\n" << a*a*a << endl;
+}

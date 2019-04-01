@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+char stringOne[256];
+char stringTwo[256];
+char stringThree[256];
+cout << "Please enter stringOne : \n";
+cin.getline(stringOne,256);
+cout << "stringOne is : " << stringOne << endl;
+cout << "Please enter stringTwo : \n";
+cin>> stringTwo;
+cout << "stringTwo is : " << stringTwo << endl;
+cout << "Please enter stringThree : \n";
+cin.getline(stringThree,256);
+cout << "stringThree is : " << stringThree << endl;
+return 0;
+}

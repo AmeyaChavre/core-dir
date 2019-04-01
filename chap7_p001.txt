@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+void SayMyName();
+int main()
+{
+cout << "Say my name function:\n";
+SayMyName();
+return 0;
+}
+void SayMyName()
+{
+cout << "Enter your name:\n";
+char arr1[20];
+cin.get(arr1,20);
+cin.get();
+cout << "Your name is :\n" << arr1 << endl;
+}
